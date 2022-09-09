@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { Button, Input, List, ListIcon, ListItem } from "@chakra-ui/react";
-import { CheckCircleIcon, TimeIcon } from "@chakra-ui/icons";
+import { CheckCircleIcon, TimeIcon, AddIcon } from "@chakra-ui/icons";
 
 export default function Home() {
   const [selectedPlate, setSelectedPlate] = useState("");
@@ -37,14 +37,24 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>SUSHI LIST</h1>
         <p className={styles.description}>Per ricordare cosa hai ordinato</p>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           <Input
             placeholder="Il numero della portata"
             onChange={(evt) => setSelectedPlate(evt.target.value)}
             value={selectedPlate}
+            autoComplete="off"
           />
-          <Button colorScheme="teal" size="md" type="submit">
-            Aggiungi
+          <Button
+            colorScheme="teal"
+            size="md"
+            type="submit"
+            aria-label="Aggiungi portata"
+          >
+            <AddIcon />
           </Button>
         </form>
         <List spacing={6}>
@@ -70,7 +80,7 @@ export default function Home() {
                   color={delivered ? "green.500" : "orange.500"}
                 />
                 <span style={{ textDecoration: delivered && "line-through" }}>
-                  Plate {type}
+                  Portata {type}
                 </span>
               </ListItem>
             );
