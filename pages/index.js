@@ -60,7 +60,11 @@ export default function Home() {
               }));
 
             return (
-              <ListItem key={plateId} onClick={handlePlateClick}>
+              <ListItem
+                className={styles.listItem}
+                key={plateId}
+                onClick={handlePlateClick}
+              >
                 <ListIcon
                   as={delivered ? CheckCircleIcon : TimeIcon}
                   color={delivered ? "green.500" : "orange.500"}
